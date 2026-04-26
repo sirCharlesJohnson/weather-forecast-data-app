@@ -1,9 +1,13 @@
+import os
+
 import requests
 
-API_KEY = "a51baa00421697110fa79bd4843b19e7"
+from main import GOOGLE_API_KEY
+
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 def get_data(place, forecast_days=None):
-    url = f"http://api.openweathermap.org/data/2.5/forecast?q={place}&appid={API_KEY}"
+    url = f"http://api.openweathermap.org/data/2.5/forecast?q={place}&appid={GOOGLE_API_KEY}"
     response = requests.get(url)
     data = response.json()
     filtered_data = data["list"]
